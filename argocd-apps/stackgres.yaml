@@ -25,7 +25,7 @@ spec:
   destination:
     namespace: stackgres
     server: https://kubernetes.default.svc
-  project: huginn-project
+  project: stackgres-project
   source:
     chart: stackgres-operator
     repoURL: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
