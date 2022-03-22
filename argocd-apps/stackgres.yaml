@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: stackgres-project
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  destinations:
+    - namespace: stackgres
+      server: https://kubernetes.default.svc
+  orphanedResources:
+    warn: false
+  sourceRepos:
+    - "*"
+---
+# https://stackgres.io/doc/latest/tutorial/stackgres-installation/
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stackgres-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: stackgres
+    server: https://kubernetes.default.svc
+  project: huginn-project
+  source:
+    chart: stackgres-operator
+    repoURL: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
+    targetRevision: 1.1.0
+    helm:
+      releaseName: stackgres-operator
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
