@@ -32,6 +32,7 @@ spec:
     targetRevision: 1.1.0
     helm:
       releaseName: stackgres-operator
+      adminui.service.type: LoadBalancer
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
