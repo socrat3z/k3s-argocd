@@ -1,4 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: huginn-project
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  destinations:
+    - namespace: apps-huginn
+      server: https://kubernetes.default.svc
+  orphanedResources:
+    warn: false
+  sourceRepos:
+    - "*"
+---
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: huginn-app
