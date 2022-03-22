@@ -10,7 +10,7 @@ spec:
   project: huginn-project
   source:
     path: apps-huginn/
-    repoURL: https://github.com/kurtburak/argocd.git
+    repoURL: https://github.com/socrat3z/k3s-argocd.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
