@@ -7,7 +7,7 @@ spec:
   destination:
     namespace: apps-huginn
     server: https://kubernetes.default.svc
-  project: sample-project
+  project: huginn-project
   source:
     path: apps-huginn/
     repoURL: https://github.com/kurtburak/argocd.git
